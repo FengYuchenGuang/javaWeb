@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15JS对象--String</title>
+</head>
+<body>
+<script>
+    
+    //创建字符串对象
+    //var str = new String("Hello String");
+    var str = " Hello String ";
+    console.log(str);
+
+    //属性、方法
+    // length属性：
+    // length属性可以用于返回字符串的长度，添加如下代码：
+    //length
+    console.log("length");
+    console.log(str.length);
+
+    // charAt()函数：
+    // charAt()函数用于返回在指定索引位置的字符，函数的参数就是索引。添加如下代码：
+    //charAt
+    console.log("charAt()方法");
+    console.log(str.charAt(4));
+
+
+    // indexOf()函数
+    // indexOf()函数用于检索指定内容在字符串中的索引位置的，返回值是索引，参数是指定的内
+    // 容。添加如下代码：
+    //indexOf
+    console.log("indexOf()方法");
+    console.log(str.indexOf("lo"));
+
+    // trim()函数
+    // trim()函数用于去除字符串两边的空格的。添加如下代码：
+    //trim
+    console.log("trim()方法");
+    var s = str.trim();
+    console.log(s.length);
+
+    // substring()函数
+    // substring()函数用于截取字符串的，函数有2个参数。
+    // 参数1：表示从那个索引位置开始截取。包含
+    // 参数2：表示到那个索引位置结束。不包含
+    //substring(start,end) --- 开始索引, 结束索引 (含头不含尾)
+    console.log("substring()方法");
+    console.log(s.substring(0,5));
+
+
+</script>
+</body>
+</html>

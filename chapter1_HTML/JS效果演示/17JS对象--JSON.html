@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17JS对象--JSON</title>
+</head>
+<body>
+<script>
+    // json对象
+    // JSON对象：JavaScript Object Notation，JavaScript对象标记法。是通过JavaScript标
+    // 记法书写的文本。
+    // 其中，key必须使用引号并且是双引号标记，value可以是任意数据类型。
+
+    var jsonStr = '{"name":"Tom", "age":18, "addr":["北京","上海","西安"]}';
+    // 上述是一个json字符串，不是json对象，所以我们需要借助如下函数来进行json字符
+    // 串和json对象的转换。
+    //json字符串--js对象
+    var obj = JSON.parse(jsonStr);
+    alert(obj.name);
+
+    // 我们也可以通过如下函数将json对象再次转换成json字符串。添加如下代码：
+    //js对象--json字符串
+    alert(JSON.stringify(obj));
+
+
+</script>
+</body>
+</html>

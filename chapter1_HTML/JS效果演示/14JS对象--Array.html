@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14JS对象--Array</title>
+</head>
+<body>
+
+<script>
+    //定义数组
+    var arr = new Array(1,2,3,4);
+    var arr = [1,2,3,4];
+    //获取数组中的值，索引从0开始计数
+    console.log(arr[0]);
+    console.log(arr[1]);
+
+    // 特点
+    // 与java中不一样的是，JavaScript中数组相当于java中的集合，数组的长度是可以变化的。而且
+    // JavaScript是弱数据类型的语言，所以数组中可以存储任意数据类型的值。
+    //特点: 长度可变 类型可变
+    var arr = [1,2,3,4];
+    arr[10] = 50;
+    console.log(arr[10]); //50
+    console.log(arr[9]); //undefined
+    console.log(arr[8]); //undefined
+    
+    arr[9] = "A";
+    arr[8] = true;
+    console.log(arr); //[1, 2, 3, 4, empty × 4, true, 'A', 50]
+
+    // .length 属性
+    //遍历
+    var arr = [1,2,3,4];
+    arr[10] = 50;
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+
+    //方法
+    // forEach()函数
+    //e是形参，接受的是数组遍历时的值
+    console.log("forEach()函数");
+    arr.forEach(function(e){
+        console.log(e);
+    })
+
+    // 当然了，在ES6中，引入箭头函数的写法，语法类似java中lambda表达式，修改上述代码如下：
+    console.log("forEach()函数内部 => 箭头函数的写法，语法类似java中lambda表达式");
+    arr.forEach((e) => {
+        console.log(e);
+    })
+
+    // push()函数
+    // push()函数是用于向数组的末尾添加元素的，其中函数的参数就是需要添加的元素，编写如下代
+    // 码：向数组的末尾添加3个元素
+    console.log("push()函数");
+    //push: 添加元素到数组末尾
+    arr.push(7,8,9);
+    console.log(arr);
+
+    // splice()函数
+    // splice()函数用来 删除 数组中的元素，函数中填入2个参数。
+    // 参数1：表示从哪个索引位置删除
+    // 参数2：表示删除元素的个数
+    // 如下代码表示：从索引2的位置开始删，删除2个元素
+    console.log("push()函数");
+    //splice: 删除元素
+    arr.splice(2,2);
+    console.log(arr);
+    
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12JS数据类型、运算符、控制语句</title>
+    
+</head>
+<body>
+<script>
+
+    //原始数据类型
+    alert(typeof 3); //number
+    alert(typeof 3.14); //number
+    alert(typeof "A"); //string
+    alert(typeof 'Hello');//string
+    alert(typeof true); //boolean
+    alert(typeof false);//boolean
+    alert(typeof null); //object
+    var a ;
+    alert(typeof a); //undefined
+
+    //运算符
+    // ==：只比较值是否相等，不区分数据类型，哪怕类型不一致，==也会自动转换类型进行值得比较
+    // ===：不光比较值，还要比较类型，如果类型不一致，直接返回false
+    var age = 20;
+    var _age = "20";
+    var $age = 20;
+    alert(age == _age);//true ，只比较值
+    alert(age === _age);//false ，类型不一样
+    alert(age === $age);//true ，类型一样，值一样
+
+    //类型转换
+    // 在js中，虽然不区分数据类型，但是有时候涉及到数值计算，还是需要进行类型转换的，js中可以通过
+    // parseInt()函数来进行将其他类型转换成数值类型。
+    // 类型转换 - 其他类型转为数字
+    alert(parseInt("12")); //12
+    alert(parseInt("12A45")); //12
+    alert(parseInt("A45"));//NaN (not a number)
+
+    
+    // 流程控制
+    // 流程控制语句if，switch，for等和java保持一致，此处不再演示
+    // 除此之外，在js中，还有非常重要的一点是：0,null,undefined,"",NaN理解成false,
+    // 反之理解成 true。
+    if(0){ //false
+        alert("0 转换为false");
+    }
+    if(1){ //true
+        alert("除0和NaN其他数字都转为 true");
+    }
+
+
+
+</script>
+
+</body>
+</html>
+

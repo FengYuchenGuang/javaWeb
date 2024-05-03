@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11JS基础语法--变量</title>
+    
+</head>
+<body>
+    <!-- JS书写语法 变量 -->
+<script>
+    //var定义变量
+    var a = 10;
+    a = "张三";
+    alert(a);
+
+    // var 特点
+    //特点1 : 作用域比较大, 全局变量
+    //特点2 : 可以重复定义的
+    {
+        var x1 = 1;
+        var x1 = "A";
+    }
+    alert(x1);
+
+    //let : 
+    // 特点1：局部变量 ; 
+    // 特点2：不能重复定义
+    {
+        let x2 = 123;
+        alert(x2);
+        x2 = 123456;
+    }
+    //因为 let是局部变量，因此这里 alert(x2) 不生效
+    // 会报错 x2 is not defined
+//    alert(x2); 
+
+    //const: 
+    //特点1 : 常量 , 
+    //特点2 : 不能给改变的.
+    const pi = 3.14;
+//   pi = 3.15; //在网页中会报错
+    alert(pi);
+
+</script>
+
+</body>
+</html>
+

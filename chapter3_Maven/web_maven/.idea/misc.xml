@@ -5,6 +5,9 @@
       <list>
         <option value="$PROJECT_DIR$/maven-project01/pom.xml" />
         <option value="$PROJECT_DIR$/maven-project02/pom.xml" />
+        <option value="$PROJECT_DIR$/maven-projectA/pom.xml" />
+        <option value="$PROJECT_DIR$/maven-projectB/pom.xml" />
+        <option value="$PROJECT_DIR$/maven-projectC/pom.xml" />
       </list>
     </option>
   </component>

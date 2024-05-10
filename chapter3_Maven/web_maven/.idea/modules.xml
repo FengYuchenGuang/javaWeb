@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/maven-projectA/maven-projectA.iml" filepath="$PROJECT_DIR$/maven-projectA/maven-projectA.iml" />
       <module fileurl="file://$PROJECT_DIR$/maven-projectB/maven-projectB.iml" filepath="$PROJECT_DIR$/maven-projectB/maven-projectB.iml" />
       <module fileurl="file://$PROJECT_DIR$/maven-projectC/maven-projectC.iml" filepath="$PROJECT_DIR$/maven-projectC/maven-projectC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web01/web01.iml" filepath="$PROJECT_DIR$/web01/web01.iml" />
     </modules>
   </component>
 </project>

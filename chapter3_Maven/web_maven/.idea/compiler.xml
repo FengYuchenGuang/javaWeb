@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="maven-project01" />
         <module name="maven-project02" />
+        <module name="web01" />
         <module name="maven-projectA" />
         <module name="maven-projectB" />
         <module name="maven-projectC" />
@@ -19,6 +20,7 @@
       <module name="maven-projectA" target="11" />
       <module name="maven-projectB" target="11" />
       <module name="maven-projectC" target="11" />
+      <module name="web01" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

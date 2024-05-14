@@ -8,9 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="web01" />
         <module name="web02" />
+        <module name="mysql03" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="mysql03" target="11" />
       <module name="web01" target="11" />
       <module name="web02" target="11" />
     </bytecodeTargetLevel>

@@ -5,9 +5,12 @@ import hxz.springboot.web02.pojo.Result;
 import hxz.springboot.web02.service.BasicService;
 import hxz.springboot.web02.service.EmpService;
 import hxz.springboot.web02.utils.XmlParserUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +19,18 @@ import java.util.List;
 @RestController
 public class EmpController {
 
-    private BasicService empService = new EmpService();
+    /**
+     * 与 EmpService 进行耦合 需要进行 分层解耦
+     *
+     * @Autowired 运行时,需要从IOC容器中获取该类型对象,赋值给该变量
+     */
+//    private BasicService empService = new EmpService();
+//    @Qualifier("basicService")
+    @Autowired
+    private BasicService empService;
+
+//    @Resource(name = "abcempService")
+//    private EmpService empService ;
 
     @RequestMapping("/listEmp")
     public Result list(){

@@ -3,6 +3,8 @@ package hxz.springboot.web02.service;
 import hxz.springboot.web02.dao.BasicDao;
 import hxz.springboot.web02.dao.EmpDao;
 import hxz.springboot.web02.pojo.Emp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -10,8 +12,16 @@ import java.util.List;
  * @author hxz
  * 三层架构，2、业务逻辑层 进行调用 3、数据访问层 ，实现 业务逻辑层 功能
  */
+//将当前对象交给IOC容器管理,成为IOC容器的bean
+@Component//("abcempService") //定义该容器的容器名
 public class EmpService implements BasicService{
-    private BasicDao empDao = new EmpDao();
+    /**
+     * 与 EmpDao 进行耦合 需要进行 分层解耦
+     *
+     * @Autowired 运行时,需要从IOC容器中获取该类型对象,赋值给该变量
+     */
+    @Autowired
+    private BasicDao empDao;
 
     @Override
     public List<Emp> listEmp() {

@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 /*
  * 自定义web服务器
  */
-public class Server {
+public class Server01 {
     public static void main(String[] args) throws IOException {
         ServerSocket ss = new ServerSocket(8080); // 监听指定端口
         System.out.println("server is running...");
@@ -71,7 +71,7 @@ class Handler extends Thread {
             writer.flush();
         } else {  // 发送成功响应:
             //读取html文件，转换为字符串
-            InputStream is = Server.class.getClassLoader().getResourceAsStream("html/a.html");
+            InputStream is = Server01.class.getClassLoader().getResourceAsStream("html/a.html");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             StringBuilder data = new StringBuilder();
             String line = null;

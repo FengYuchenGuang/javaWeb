@@ -45,7 +45,7 @@ NodeJS 安装完毕后，会自动配置好环境变量，我们验证一下是�
 使用管理员身份运行命令行，在命令行中，执行如下指令：
 
 ```
-npm config set prefix "E:\develop\NodeJS"
+npm config set prefix "D:\RJ\NodeJS"
 ```
 
 注意：E:\develop\NodeJS 这个目录是NodeJS的安装目录

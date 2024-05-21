@@ -10,7 +10,10 @@ where name = '教研部';
 -- b. 再查询该部门ID下的员工信息 - tb_emp
 select *
 from tb_emp
-where dept_id = (select id from tb_dept where name = '教研部');
+where dept_id = (
+    select id
+    from tb_dept
+    where name = '教研部');
 
 
 -- B. 查询在 "方东白" 入职之后的员工信息
@@ -22,7 +25,10 @@ where name = '方东白';
 -- b. 查询在 "方东白" 入职之后的员工信息
 select *
 from tb_emp
-where entrydate > (select entrydate from tb_emp where name = '方东白');
+where entrydate > (
+    select entrydate
+    from tb_emp
+    where name = '方东白');
 
 
 
@@ -37,7 +43,11 @@ where name = '教研部'
 -- b. 根据部门ID, 查询该部门下的员工信息 - tb_emp
 select *
 from tb_emp
-where dept_id in (select id from tb_dept where name = '教研部' or name = '咨询部');
+where dept_id in (
+    select id
+    from tb_dept
+    where name = '教研部'
+       or name = '咨询部');
 
 
 -- 行子查询
@@ -62,7 +72,10 @@ where entrydate = '2007-01-01'
 -- 方式二
 select *
 from tb_emp
-where (entrydate, job) = (select entrydate, job from tb_emp where name = '韦一笑');
+where (entrydate, job) = (
+    select entrydate, job
+    from tb_emp
+    where name = '韦一笑');
 
 
 -- 表子查询

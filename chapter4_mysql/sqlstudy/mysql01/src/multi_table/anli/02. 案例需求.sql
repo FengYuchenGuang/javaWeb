@@ -1,5 +1,3 @@
-
-
 -- 需求:
 -- 1. 查询价格低于 10元 的菜品的名称 、价格 及其 菜品的分类名称 .
 -- 表: dish , category
@@ -10,7 +8,8 @@ from dish d,
 where d.category_id = c.id
   and d.price < 10;
 
--- 2. 查询所有价格在 10元(含)到50元(含)之间 且 状态为'起售'的菜品, 展示出菜品的名称、价格 及其 菜品的分类名称 (即使菜品没有分类 , 也需要将菜品查询出来).
+-- 2. 查询所有价格在 10元(含)到50元(含)之间 且 状态为'起售'的菜品,
+--    展示出菜品的名称、价格 及其 菜品的分类名称 (即使菜品没有分类 , 也需要将菜品查询出来).
 -- 表: dish , category
 -- SQL:
 select d.name, d.price, c.name
@@ -54,9 +53,12 @@ where s.id = sd.setmeal_id
 -- 表: dish
 -- SQL:
 -- a. 计算 菜品平均价格
-select avg(price) from dish;
+select avg(price)
+from dish;
 
 -- b. 查询出低于菜品平均价格的菜品信息
-select * from dish where price < (select avg(price) from dish);
+select *
+from dish
+where price < (select avg(price) from dish);
 
 

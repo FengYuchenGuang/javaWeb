@@ -20,7 +20,7 @@
       <module name="maven-projectA" target="11" />
       <module name="maven-projectB" target="11" />
       <module name="maven-projectC" target="11" />
-      <module name="web01" target="11" />
+      <module name="web01" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

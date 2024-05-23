@@ -16,13 +16,13 @@ public interface EmpMapper {
     //根据ID删除数据
     @Delete("delete from emp where id = #{id}")
     public void delete(Integer id);
-    //public int delete(Integer id);
+    //public int delete(Integer id); // int 影响行数
 
 
     //新增员工
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time)" +
-            " values (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
+    @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回
+    @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
+            "values (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
     public void insert(Emp emp);
 
 
@@ -65,7 +65,11 @@ public interface EmpMapper {
 //    public List<Emp> list(String name, Short gender, LocalDate begin , LocalDate end);
 
     //动态条件查询
-    public List<Emp> list(String name, Short gender, LocalDate begin , LocalDate end);
+    //对于mapper接口中，传入的参数有多个时必须使用 @param 进行标识
+    public List<Emp> list(@Param("name") String name,
+                          @Param("gender")Short gender,
+                          @Param("begin")LocalDate begin ,
+                          @Param("end")LocalDate end);
 
 
     //动态更新员工
@@ -73,5 +77,5 @@ public interface EmpMapper {
 
 
     //批量删除员工
-    public void deleteByIds(List<Integer> ids);
+    public void deleteByIds(@Param("ids") List<Integer> ids);
 }

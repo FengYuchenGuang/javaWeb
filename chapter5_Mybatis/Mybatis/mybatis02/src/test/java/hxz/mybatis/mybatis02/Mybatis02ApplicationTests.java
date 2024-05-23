@@ -30,8 +30,8 @@ class Mybatis02ApplicationTests {
     public void testInsert(){
         //构造员工对象
         Emp emp = new Emp();
-        emp.setUsername("Tom3");
-        emp.setName("汤姆3");
+        emp.setUsername("Tom33");
+        emp.setName("汤姆33");
         emp.setImage("1.jpg");
         emp.setGender((short)1);
         emp.setJob((short)1);
@@ -42,7 +42,7 @@ class Mybatis02ApplicationTests {
 
         //执行新增员工信息操作
         empMapper.insert(emp);
-        System.out.println(emp.getId());
+        System.out.println(emp.getId()); //数据添加成功后，主键返回
     }
 
     //更新员工
@@ -51,8 +51,8 @@ class Mybatis02ApplicationTests {
         //构造员工对象
         Emp emp = new Emp();
         emp.setId(18);
-        emp.setUsername("Tom1");
-        emp.setName("汤姆1");
+        emp.setUsername("Tom123");
+        emp.setName("汤姆123");
         emp.setImage("1.jpg");
         emp.setGender((short)1);
         emp.setJob((short)1);
@@ -76,11 +76,11 @@ class Mybatis02ApplicationTests {
     //根据条件查询员工
     @Test
     public void testList(){
-        //List<Emp> empList = empMapper.list("张", (short) 1, LocalDate.of(2010, 1, 1), LocalDate.of(2020, 1, 1));
+//        List<Emp> empList = empMapper.list("张", (short) 1, LocalDate.of(2010, 1, 1), LocalDate.of(2020, 1, 1));
         //List<Emp> empList = empMapper.list("张", null, null, null);
-        //List<Emp> empList = empMapper.list("张", (short)1, null, null);
-        //List<Emp> empList = empMapper.list(null, (short)1, null, null);
-        List<Emp> empList = empMapper.list(null, null, null, null);
+//        List<Emp> empList = empMapper.list("张", (short)1, null, null);
+        List<Emp> empList = empMapper.list(null, (short)1, null, null);
+//        List<Emp> empList = empMapper.list(null, null, null, null);
         System.out.println(empList);
     }
 

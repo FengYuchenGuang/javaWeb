@@ -4,6 +4,7 @@ import hxz.springboot.web02.dao.BasicDao;
 import hxz.springboot.web02.dao.EmpDao;
 import hxz.springboot.web02.pojo.Emp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +13,9 @@ import java.util.List;
  * @author hxz
  * 三层架构，2、业务逻辑层 进行调用 3、数据访问层 ，实现 业务逻辑层 功能
  */
+
+@Primary //当有多个 BasicService 定义的 Bean 出现冲突时，该注解有的则被注入，不会出现报错
+
 //将当前对象交给IOC容器管理,成为IOC容器的bean
 @Component//("abcempService") //定义该容器的容器名
 public class EmpService implements BasicService{

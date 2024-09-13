@@ -37,6 +37,8 @@ public class RequestController {
 //        return "OK";
 //    }
 
+//    springboot方式
+//    @RequestParam 注解，方法形参名与请求参数名不匹配，可以使用注解完成映射
     @RequestMapping("/simpleParam")
     public String simpleParam(@RequestParam(name = "name", required = false) String username,
                               @RequestParam(name = "age", required = false) Integer myage) {

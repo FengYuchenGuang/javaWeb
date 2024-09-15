@@ -1,5 +1,6 @@
 package hxz.pro.tlias.service;
 
+import hxz.pro.tlias.pojo.Emp;
 import hxz.pro.tlias.pojo.PageBean;
 
 import java.time.LocalDate;
@@ -15,11 +16,19 @@ public interface EmpService {
      * @param pageSize
      * @return
      */
-    PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
+    List<Emp> page(Integer page, Integer pageSize);
 
     /**
      * 批量删除
      * @param ids
      */
-    void delete(List<Integer> ids);
+    int deletes(List<Integer> ids);
+
+
+    /**
+     * 添加员工
+     *
+     */
+    int add(Emp emp);
+
 }

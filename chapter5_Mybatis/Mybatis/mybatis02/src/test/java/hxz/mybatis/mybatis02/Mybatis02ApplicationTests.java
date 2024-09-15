@@ -91,8 +91,8 @@ class Mybatis02ApplicationTests {
         //构造员工对象
         Emp emp = new Emp();
         emp.setId(19);
-        emp.setUsername("Tom222333");
-//        emp.setName("汤姆222");
+        emp.setUsername("Tom2233");
+        emp.setName("汤姆262");
 //        emp.setGender((short)1);
 //        emp.setUpdateTime(LocalDateTime.now());
 
@@ -104,7 +104,7 @@ class Mybatis02ApplicationTests {
     //批量删除员工 - 13,14,15
     @Test
     public void testDeleteByIds(){
-        List<Integer> ids = Arrays.asList(13, 14, 15);
+        List<Integer> ids = Arrays.asList(10, 11, 12);
         empMapper.deleteByIds(ids);
     }
 }

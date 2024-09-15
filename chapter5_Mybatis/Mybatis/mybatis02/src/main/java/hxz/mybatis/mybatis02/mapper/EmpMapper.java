@@ -78,4 +78,6 @@ public interface EmpMapper {
 
     //批量删除员工
     public void deleteByIds(@Param("ids") List<Integer> ids);
+
+
 }

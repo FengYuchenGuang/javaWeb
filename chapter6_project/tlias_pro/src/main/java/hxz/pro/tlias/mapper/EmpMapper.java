@@ -1,9 +1,7 @@
 package hxz.pro.tlias.mapper;
 
 import hxz.pro.tlias.pojo.Emp;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -30,8 +28,8 @@ public interface EmpMapper {
      * @param pageSize
      * @return
      */
-    @Select("select * from emp limit #{start},#{pageSize}")
-    public List<Emp> page(Integer start, Integer pageSize);
+    @Select("select * from emp limit #{page},#{pageSize}")
+    public List<Emp> page(@Param("page") Integer start, @Param("pageSize") Integer pageSize);
 
     /**
      * 员工信息查询
@@ -44,11 +42,21 @@ public interface EmpMapper {
      * 批量删除
      * @param ids
      */
-    void deletes(List<Integer> ids);
+    int deletes(@Param("ids") List<Integer> ids);
 
     /**
      * 单个删除测试
      */
     @Delete("delete from emp where id = #{id}")
-    public void delete(Integer id);
+    public int delete(Integer id);
+
+
+    /**
+     * 添加员工
+     */
+    //新增员工
+    @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回
+    @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
+            "values (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},now(),now())")
+    int insert(Emp emp);
 }

@@ -26,7 +26,7 @@
     </delete>
 
     <!--条件查询-->
-    <select id="list" resultType="hxz.pro.tlias.pojo.Emp">
+    <select id="query" resultType="hxz.pro.tlias.pojo.Emp">
         select *
         from emp
         <where>

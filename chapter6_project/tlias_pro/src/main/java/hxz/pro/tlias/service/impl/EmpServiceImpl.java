@@ -20,9 +20,23 @@ public class EmpServiceImpl implements EmpService {
     private EmpMapper empMapper;
 
     @Override
+    public List<Emp> list() {
+
+        List<Emp> empList = empMapper.list();
+        return empList;
+    }
+
+    @Override
     public List<Emp> page(Integer page, Integer pageSize) {
 
         List<Emp> empList = empMapper.page(page,pageSize);
+        return empList;
+    }
+
+    @Override
+    public List<Emp> query(String name, Short gender, LocalDate start, LocalDate end) {
+
+        List<Emp> empList = empMapper.query(name,gender,start,end);
         return empList;
     }
 

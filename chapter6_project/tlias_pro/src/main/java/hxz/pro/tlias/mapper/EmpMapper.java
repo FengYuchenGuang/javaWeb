@@ -22,8 +22,21 @@ public interface EmpMapper {
     @Select("select count(*) from emp")
     public Long count();
 
+
+    /**
+     * 员工信息查询
+     * @return
+     */
+    @Select("select * from emp")
+    public List<Emp> list();
+
+
     /**
      * 分页查询,获取列表数据
+     *
+     * select * from emp limit 起始索引,每页记录数
+     * 其实索引从0开始 起始索引 = （查询页码 - 1）*（每页记录数）
+     *
      * @param start
      * @param pageSize
      * @return
@@ -31,12 +44,18 @@ public interface EmpMapper {
     @Select("select * from emp limit #{page},#{pageSize}")
     public List<Emp> page(@Param("page") Integer start, @Param("pageSize") Integer pageSize);
 
+
     /**
-     * 员工信息查询
-     * @return
+     * 条件查询
+     *
+     * 动态条件查询
+     *  对于mapper接口中，传入的参数有多个时必须使用 @param 进行标识
      */
-    //@Select("select * from emp")
-    public List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
+    List<Emp> query(@Param("name") String name,
+                    @Param("gender") Short gender,
+                    @Param("begin") LocalDate start,
+                    @Param("end") LocalDate end);
+
 
     /**
      * 批量删除
@@ -53,6 +72,11 @@ public interface EmpMapper {
 
     /**
      * 添加员工
+     *
+     * 两个时间可以不用 now() 在添加数据库时设置当前时间
+     * 也可以在 service层 中将 createTime 与 updateTime
+     * 设置为当前时间 用  setCreateTime(LocalDateTime.now());
+     *                 setUpdateTime(LocalDateTime.now());
      */
     //新增员工
     @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回

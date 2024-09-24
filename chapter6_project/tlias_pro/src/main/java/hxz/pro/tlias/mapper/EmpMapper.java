@@ -41,8 +41,8 @@ public interface EmpMapper {
      * @param pageSize
      * @return
      */
-    @Select("select * from emp limit #{page},#{pageSize}")
-    public List<Emp> page(@Param("page") Integer start, @Param("pageSize") Integer pageSize);
+    @Select("select * from emp limit #{start},#{pageSize}")
+    public List<Emp> page(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
 
 
     /**
@@ -83,4 +83,25 @@ public interface EmpMapper {
     @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
             "values (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},now(),now())")
     int insert(Emp emp);
+
+
+    /**
+     * ==================================
+     * =============tlias================
+     * ==================================
+     */
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    @Select("select * from emp where  id = #{id}")
+    Emp getById_tlias(Integer id);
+
+    /**
+     * 更新员工
+     * @param emp
+     */
+    int update_tlias(Emp emp);
+
 }

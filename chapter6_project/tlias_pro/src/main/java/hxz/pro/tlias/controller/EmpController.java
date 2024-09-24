@@ -38,6 +38,10 @@ public class EmpController {
     @Autowired
     private EmpService empService;
 
+    /**
+     * 查询全部内容
+     * @return
+     */
     @GetMapping("/list")
     public Result list(){
 
@@ -55,6 +59,12 @@ public class EmpController {
         return Result.success(empList);
     }
 
+    /**
+     * 分页查询 （自己编写全部代码，计数，分页， limit，下面有使用插件获取的方法，可以学习）
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("/page")
     public Result page(@RequestParam(defaultValue = "0") Integer page,
                        @RequestParam(defaultValue = "10") Integer pageSize){
@@ -73,6 +83,8 @@ public class EmpController {
     }
 
     /**
+     * 条件查询
+     *
      * 如果变量名称和参数名称不同，可以使用 name 属性配置 @RequestParam 名称
      *
      * 如果传递参数可以为空 ，需要写上 required= false
@@ -98,39 +110,13 @@ public class EmpController {
 
         return Result.success(empList);
     }
-//    @PostMapping("/query")
-//    public Result query(@RequestParam(name = "name", required = false)String name,
-//                        @RequestParam(name = "gender", required = false)Short gender,
-//                        @RequestParam(name = "createTime", required = false) LocalDate createTime,
-//                        @RequestParam(name = "updateTime", required = false) LocalDate updateTime){
-//
-//        log.info("条件查询, 参数: {}, {}, {}, {}",name,gender,createTime,updateTime);
-//        //调用service分页查询
-//        List<Emp> empList;
-//        try {
-//            empList = empService.query(name,gender,createTime,updateTime);
-//
-//        }catch (Exception e){
-//            return Result.error(e.getMessage());
-//        }
-//
-//        return Result.success(empList);
-//    }
 
 
-//    @RequestMapping
-//    public Result page(@RequestParam(defaultValue = "1") Integer page,
-//                       @RequestParam(defaultValue = "10") Integer pageSize,
-//                       String name, Short gender,
-//                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
-//                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
-//        log.info("分页查询, 参数: {},{},{},{},{},{}",page,pageSize,name,gender,begin,end);
-//        //调用service分页查询
-//        List<Emp> empList = empService.page(page,pageSize,name,gender,begin,end);
-//        return Result.success(empList);
-//    }
-
-
+    /**
+     * 删除员工（单个、批量都行）
+     * @param ids
+     * @return
+     */
 //    @RequestMapping(value = "/deletes",method = RequestMethod.POST)
     @RequestMapping(value = "/deletes")
     public Result delete(@RequestParam List<Integer> ids){
@@ -157,7 +143,7 @@ public class EmpController {
      */
     @PostMapping("/insert")
     public Result add(@RequestBody Emp emp){
-        log.info("新增部门: {}" , emp);
+        log.info("新增员工:  {}" , emp);
 
         //try-catch 出现错误时不结束，返回错误信息
         int row;
@@ -171,5 +157,117 @@ public class EmpController {
             return Result.error("添加失败！！！");
         }
         return Result.success("添加员工成功");
+    }
+
+
+
+    /**
+     * ===========给 项目 nginx-1.22.0-tlias 写的控制层代码=================
+     */
+
+    /**
+     * 分页查询 （使用 pagehelper 简化代码）
+     * @param page
+     * @param pageSize
+     * @param name
+     * @param gender
+     * @param begin
+     * @param end
+     * @return
+     */
+    @RequestMapping
+    public Result page_tlias(@RequestParam(defaultValue = "0") Integer page,
+                             @RequestParam(defaultValue = "10") Integer pageSize,
+                             String name, Short gender,
+                             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+                             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
+        log.info("分页查询, 参数: {},{},{},{},{},{}",page,pageSize,name,gender,begin,end);
+
+        //调用service分页查询
+        List<Emp> empList;
+        PageBean pageBean;
+        try {
+            pageBean = empService.page_tlias(page,pageSize,name,gender,begin,end);
+
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+
+        return Result.success(pageBean);
+    }
+
+
+
+    /**
+     * 添加员工
+     *
+     */
+    @PostMapping
+    public Result insert_tlias(@RequestBody Emp emp){
+        log.info("新增员工: {}" , emp);
+
+        //try-catch 出现错误时不结束，返回错误信息
+        int row;
+        try {
+            row = empService.insert_tlias(emp);
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+
+        if(row == 0){
+            return Result.error("添加失败！！！");
+        }
+        return Result.success("添加员工成功");
+    }
+
+    @DeleteMapping("/{ids}")
+    public Result delete_tlias(@PathVariable List<Integer> ids){
+        log.info("批量删除操作, ids:{}",ids);
+
+        int row;
+        try {
+            row = empService.delete_tlias(ids);
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+
+        if(row == 0){
+            return Result.error("添加失败！！！");
+        }
+
+        return Result.success();
+    }
+
+
+    @GetMapping("/{id}")
+    public Result getById_tlias(@PathVariable Integer id){
+        log.info("根据ID查询员工信息, id: {}",id);
+
+        Emp emp;
+        try {
+            emp = empService.getById_tlias(id);
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+
+        return Result.success(emp);
+    }
+
+    @PutMapping
+    public Result update_tlias(@RequestBody Emp emp){
+        log.info("更新员工信息 : {}", emp);
+
+        int row;
+        try {
+            row = empService.update_tlias(emp);
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+
+        if(row == 0){
+            return Result.error("添加失败！！！");
+        }
+
+        return Result.success();
     }
 }

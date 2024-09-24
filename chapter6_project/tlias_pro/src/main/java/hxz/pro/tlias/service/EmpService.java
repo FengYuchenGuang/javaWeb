@@ -44,4 +44,39 @@ public interface EmpService {
      */
     int add(Emp emp);
 
+
+    /**
+     * ========= tlias =============
+     */
+
+    PageBean page_tlias(Integer page, Integer pageSize,String name,Short gender,LocalDate begin,LocalDate end);
+
+
+    /**
+     * 添加员工
+     * @param emp
+     * @return
+     */
+    int insert_tlias(Emp emp);
+
+
+    /**
+     * 批量删除
+     * @param ids
+     */
+    int delete_tlias(List<Integer> ids);
+
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    Emp getById_tlias(Integer id);
+
+    /**
+     * 更新员工
+     * @param emp
+     */
+    int update_tlias(Emp emp);
+
 }

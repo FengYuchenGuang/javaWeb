@@ -1,10 +1,7 @@
 package hxz.pro.tlias.mapper;
 
 import hxz.pro.tlias.pojo.Dept;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,6 +30,23 @@ public interface DeptMapper {
      * 新增部门
      * @param dept
      */
-    @Insert("insert into dept(id, name, create_time, update_time) values(#{id}, #{name}, #{createTime}, #{updateTime})")
+    @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回
+    @Insert("insert into dept(name, create_time, update_time) values(#{name}, #{createTime}, #{updateTime})")
     int insert(Dept dept);
+
+    /**
+     * 修改部门
+     * @param dept
+     * @return
+     */
+    @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
+    int updateById(Dept dept);
+
+    /**
+     * 获取单个部门信息
+     * @param id
+     * @return
+     */
+    @Select("select * from dept where id = #{id}")
+    Dept get(Integer id);
 }

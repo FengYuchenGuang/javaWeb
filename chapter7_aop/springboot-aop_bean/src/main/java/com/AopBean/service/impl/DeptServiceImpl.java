@@ -57,7 +57,7 @@ public class DeptServiceImpl implements DeptService {
         int row;
         try {
             row = deptMapper.deleteById(id);
-            int i = 1 / 0; //抛出异常
+//            int i = 1 / 0; //抛出异常
             empMapper.deleteByDeptId(id);
         } finally {
             DeptLog deptLog = new DeptLog();
@@ -74,16 +74,10 @@ public class DeptServiceImpl implements DeptService {
 
         //将注册时间与修改时间填写为当前时间
         int row;
-        try {
-            dept.setCreateTime(LocalDateTime.now());
-            dept.setUpdateTime(LocalDateTime.now());
-            row = deptMapper.insert(dept);
-        } finally {
-            DeptLog deptLog = new DeptLog();
-            deptLog.setCreateTime(LocalDateTime.now());
-            deptLog.setLog("执行了添加部门的操作，本次添加的部门id是 "+dept.getId());
-            deptLogService.insert(deptLog);
-        }
+        dept.setCreateTime(LocalDateTime.now());
+        dept.setUpdateTime(LocalDateTime.now());
+        row = deptMapper.insert(dept);
+
         return row;
     }
 
@@ -92,15 +86,9 @@ public class DeptServiceImpl implements DeptService {
     public int update(Dept dept) {
 
         int row;
-        try {
-            dept.setCreateTime(LocalDateTime.now());
-            row = deptMapper.updateById(dept);
-        } finally {
-            DeptLog deptLog = new DeptLog();
-            deptLog.setCreateTime(LocalDateTime.now());
-            deptLog.setLog("执行了修改部门的操作，本次修改的部门id是 "+dept.getId());
-            deptLogService.insert(deptLog);
-        }
+        dept.setCreateTime(LocalDateTime.now());
+        row = deptMapper.updateById(dept);
+
         return row;
     }
 

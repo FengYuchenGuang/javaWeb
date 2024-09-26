@@ -91,11 +91,7 @@ public class DeptController {
 
         //调用service新增部门
         int row;
-        try {
-            row = deptService.add(dept);
-        }catch (Exception e){
-            return Result.error(e.getMessage());
-        }
+        row = deptService.add(dept);  // 有添加全局异常捕获
 
         if(row == 0){
             return Result.error("添加失败！！！");
@@ -193,11 +189,7 @@ public class DeptController {
 
         //调用service新增部门
         int row;
-        try {
-            row = deptService.add(dept);
-        }catch (Exception e){
-            return Result.error(e.getMessage());
-        }
+        row = deptService.add(dept); // 有添加全局异常捕获
 
         if(row == 0){
             return Result.error("添加失败！！！");

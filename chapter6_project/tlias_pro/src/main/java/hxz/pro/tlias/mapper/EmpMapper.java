@@ -104,4 +104,14 @@ public interface EmpMapper {
      */
     int update_tlias(Emp emp);
 
+    @Select("select id,name,username from emp where username = #{username} and password = #{password}")
+    Emp login(Emp emp);
+
+    /**
+     * 根据部门号删除
+     */
+    @Delete("delete from emp where dept_id = #{id}")
+    public void deleteByDeptId(Integer id);
+
+
 }

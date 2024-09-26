@@ -146,4 +146,11 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+    @Override
+    public Emp login(Emp emp) {
+
+        Emp e = empMapper.login(emp);
+        return e;
+    }
+
 }

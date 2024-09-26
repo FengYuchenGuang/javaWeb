@@ -79,4 +79,12 @@ public interface EmpService {
      */
     int update_tlias(Emp emp);
 
+
+    /**
+     * 登录验证，查找数据库中是否有 该用户
+     * 有 返回 Emp
+     * 没有返回 null
+     */
+    Emp login(Emp emp);
+
 }

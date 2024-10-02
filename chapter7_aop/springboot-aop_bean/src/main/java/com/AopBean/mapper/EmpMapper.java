@@ -105,6 +105,12 @@ public interface EmpMapper {
      */
     int update_tlias(Emp emp);
 
+
+    /**
+     * 登录
+     * @param emp
+     * @return
+     */
     @Select("select id,name,username from emp where username = #{username} and password = #{password}")
     Emp login(Emp emp);
 

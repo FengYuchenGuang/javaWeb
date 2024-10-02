@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author hxz
  */
 @Component
-@Aspect
+//@Aspect
 @Slf4j
 public class MyAspect {
 
@@ -36,6 +36,10 @@ public class MyAspect {
         log.info("before ... ");
     }
 
+    /**
+     * 切入点表达式抽取
+     *
+     */
     @Around("pt()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("around before ... ");
@@ -47,7 +51,11 @@ public class MyAspect {
         return result;
     }
 
-    @After("pt()")
+    /**
+     * 注解形式进行 切入点表达式
+     *
+     */
+    @After("@annotation(com.AopBean.aop.MyLog)")
     public void after(){
         log.info("after ... ");
     }

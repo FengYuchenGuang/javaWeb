@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component //将当前类交给AOP容器管理
-@Aspect //表示当前类 为 aop 类
+//@Aspect //表示当前类 为 aop 类
 public class TimeAspect {
 
     /**加在那个方法上

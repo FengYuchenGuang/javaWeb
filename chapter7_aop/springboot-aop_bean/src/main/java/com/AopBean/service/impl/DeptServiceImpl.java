@@ -1,6 +1,7 @@
 package com.AopBean.service.impl;
 
 
+import com.AopBean.aop.MyLog;
 import com.AopBean.mapper.DeptMapper;
 import com.AopBean.mapper.EmpMapper;
 import com.AopBean.pojo.Dept;
@@ -27,6 +28,7 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptLogService deptLogService;
 
+    @MyLog //自己写的注解，AOP中另一种切入点方法
     @Override
     public List<Dept> list() {
 

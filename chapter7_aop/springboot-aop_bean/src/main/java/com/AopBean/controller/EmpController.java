@@ -1,6 +1,7 @@
 package com.AopBean.controller;
 
 
+import com.AopBean.anno.hxzLog;
 import com.AopBean.pojo.Emp;
 import com.AopBean.pojo.PageBean;
 import com.AopBean.pojo.Result;
@@ -101,6 +102,7 @@ public class EmpController {
      *
      */
     @PostMapping
+    @hxzLog
     public Result insert_tlias(@RequestBody Emp emp){
         log.info("新增员工: {}" , emp);
 
@@ -119,6 +121,7 @@ public class EmpController {
     }
 
     @DeleteMapping("/{ids}")
+    @hxzLog
     public Result delete_tlias(@PathVariable List<Integer> ids){
         log.info("批量删除操作, ids:{}",ids);
 
@@ -152,6 +155,7 @@ public class EmpController {
     }
 
     @PutMapping
+    @hxzLog
     public Result update_tlias(@RequestBody Emp emp){
         log.info("更新员工信息 : {}", emp);
 

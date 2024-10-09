@@ -103,6 +103,10 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public PageBean page_tlias(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
         //1. 设置分页参数
+        /**
+         * 使用分页插件之前，先输入 查询第几页 ，每页数量 这些参数
+         * 然后 调用 PageHelper 时 会自动 查询总记录数，进行 分页操作
+         */
         PageHelper.startPage(page,pageSize);
 
         //2. 执行查询
